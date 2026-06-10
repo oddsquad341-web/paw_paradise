@@ -43,39 +43,47 @@
 }
 
 :root {
-  --primary: var(--color-blue-700);
-  --primary-foreground: var(--color-blue-50);
-  --sidebar-primary: var(--color-blue-600);
-  --sidebar-primary-foreground: var(--color-blue-50);
-  --chart-1: var(--color-blue-300);
-  --chart-2: var(--color-blue-500);
-  --chart-3: var(--color-blue-600);
-  --chart-4: var(--color-blue-700);
-  --chart-5: var(--color-blue-800);
-  --radius: 0.65rem;
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.235 0.015 65);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.235 0.015 65);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.235 0.015 65);
-  --secondary: oklch(0.98 0.001 286.375);
-  --secondary-foreground: oklch(0.4 0.015 65);
-  --muted: oklch(0.967 0.001 286.375);
-  --muted-foreground: oklch(0.552 0.016 285.938);
-  --accent: oklch(0.967 0.001 286.375);
-  --accent-foreground: oklch(0.141 0.005 285.823);
-  --destructive: oklch(0.577 0.245 27.325);
-  --destructive-foreground: oklch(0.985 0 0);
-  --border: oklch(0.92 0.004 286.32);
-  --input: oklch(0.92 0.004 286.32);
-  --ring: oklch(0.623 0.214 259.815);
-  --sidebar: oklch(0.985 0 0);
-  --sidebar-foreground: oklch(0.235 0.015 65);
-  --sidebar-accent: oklch(0.967 0.001 286.375);
-  --sidebar-accent-foreground: oklch(0.141 0.005 285.823);
-  --sidebar-border: oklch(0.92 0.004 286.32);
-  --sidebar-ring: oklch(0.623 0.214 259.815);
+  /* Paw Paradise Brand Colors */
+  --color-primary-blue: #3f51a3;
+  --color-primary-green: #58bd7a;
+  --color-primary-pink: #f1d4dd;
+  --color-secondary-cream: #f4f1e5;
+  --color-black: #000000;
+  
+  /* Design Tokens */
+  --primary: #3f51a3;
+  --primary-foreground: #ffffff;
+  --sidebar-primary: #3f51a3;
+  --sidebar-primary-foreground: #ffffff;
+  --chart-1: #3f51a3;
+  --chart-2: #58bd7a;
+  --chart-3: #f1d4dd;
+  --chart-4: #f4f1e5;
+  --chart-5: #000000;
+  --radius: 0.5rem;
+  --background: #f4f1e5;
+  --foreground: #000000;
+  --card: #ffffff;
+  --card-foreground: #000000;
+  --popover: #ffffff;
+  --popover-foreground: #000000;
+  --secondary: #58bd7a;
+  --secondary-foreground: #ffffff;
+  --muted: #e8e5d8;
+  --muted-foreground: #666666;
+  --accent: #f1d4dd;
+  --accent-foreground: #3f51a3;
+  --destructive: #ef4444;
+  --destructive-foreground: #ffffff;
+  --border: #e8e5d8;
+  --input: #ffffff;
+  --ring: #3f51a3;
+  --sidebar: #f4f1e5;
+  --sidebar-foreground: #000000;
+  --sidebar-accent: #f1d4dd;
+  --sidebar-accent-foreground: #3f51a3;
+  --sidebar-border: #e8e5d8;
+  --sidebar-ring: #3f51a3;
 }
 
 .dark {
@@ -119,6 +127,20 @@
   }
   body {
     @apply bg-background text-foreground;
+    font-family: 'Crimson Text', serif;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-weight: 600;
+  }
+  h1 {
+    @apply text-5xl md:text-6xl font-bold leading-tight;
+  }
+  h2 {
+    @apply text-4xl md:text-5xl font-semibold leading-snug;
+  }
+  h3 {
+    @apply text-2xl md:text-3xl font-semibold;
   }
   button:not(:disabled),
   [role="button"]:not([aria-disabled="true"]),
