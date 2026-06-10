@@ -1,228 +1,129 @@
 import Layout from '@/components/Layout';
 import { useState } from 'react';
-import { Mail, Phone, MapPin, MessageCircle } from 'lucide-react';
+import { Phone, MapPin, MessageCircle, Send } from 'lucide-react';
 
 export default function Contact() {
-  const [formData, setFormData] = useState({
-    name: '',
-    phone: '',
-    email: '',
-    petName: '',
-    petBreed: '',
-    service: '',
-    message: '',
-  });
+  const [form, setForm] = useState({ name: '', email: '', phone: '', dog: '', message: '' });
+  const [sent, setSent] = useState(false);
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
-    const { name, value } = e.target;
-    setFormData(prev => ({ ...prev, [name]: value }));
+  const handle = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setForm({ ...form, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const submit = (e: React.FormEvent) => {
     e.preventDefault();
-    const whatsappMessage = `Hi Paw Paradise, I'd like to enquire about your services. Name: ${formData.name}, Phone: ${formData.phone}, Email: ${formData.email}, Pet Name: ${formData.petName}, Pet Breed: ${formData.petBreed}, Service: ${formData.service}, Message: ${formData.message}`;
-    window.open(`https://wa.me/919873218040?text=${encodeURIComponent(whatsappMessage)}`, '_blank');
+    const msg = encodeURIComponent(
+      `Hi Paw Paradise!\n\nName: ${form.name}\nPhone: ${form.phone}\nDog: ${form.dog}\n\nMessage: ${form.message}`
+    );
+    window.open(`https://wa.me/919873218040?text=${msg}`, '_blank');
+    setSent(true);
   };
+
+  const inputClass = "w-full px-4 py-3 rounded-xl text-sm border transition-all outline-none focus:border-[#3f51a3] focus:ring-2 focus:ring-[#3f51a3]/10";
+  const inputStyle = { borderColor: '#ddd8c5', background: 'white', color: '#111', fontFamily: 'inherit' };
 
   return (
     <Layout>
-      {/* Hero Section */}
-      <section className="py-16 bg-blue-700 text-white">
-        <div className="container mx-auto px-4 text-center">
-          <h1 className="text-5xl md:text-6xl font-bold mb-4">Get In Touch</h1>
-          <p className="text-xl max-w-2xl mx-auto">
-            We are here to answer all your questions about Paw Paradise
+      <section className="section" style={{ background: '#1a1f3c' }}>
+        <div className="max-w-3xl mx-auto px-6 text-center">
+          <div className="eyebrow animate-fade-up" style={{ color: '#58bd7a' }}>Reach out</div>
+          <h1 className="display-xl text-white animate-fade-up delay-100 mb-6">Contact us</h1>
+          <p className="body-lg animate-fade-up delay-200" style={{ color: 'rgba(255,255,255,0.65)' }}>
+            We're available on WhatsApp and by phone. We'll get back to you promptly.
           </p>
         </div>
       </section>
 
-      {/* Contact Info Cards */}
-      <section className="py-16 bg-secondary-cream">
-        <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
-            {/* WhatsApp */}
-            <div className="bg-white p-8 rounded-lg shadow-md text-center">
-              <MessageCircle className="w-12 h-12 text-green-500 mx-auto mb-4" />
-              <h3 className="text-2xl font-bold mb-2 text-gray-900">WhatsApp</h3>
-              <p className="text-gray-700 mb-4">Fastest way to reach us</p>
-              <div className="space-y-2">
-                <a
-                  href="https://wa.me/919873218040?text=Hi%20Paw%20Paradise%2C%20I%27d%20like%20to%20know%20more%20about%20your%20dog%20care%20services."
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="block text-green-600 hover:text-green-700 font-semibold"
-                >
-                  Chat with Aashima
+      <section className="section max-w-7xl mx-auto px-6">
+        <div className="grid lg:grid-cols-2 gap-16">
+          {/* Contact Info */}
+          <div className="reveal-left">
+            <div className="eyebrow">Get in touch</div>
+            <h2 className="display-md mb-8" style={{ color: '#1a1f3c' }}>We'd love to meet your dog</h2>
+
+            <div className="space-y-6 mb-10">
+              {[
+                { Icon: Phone, label: 'Aashima', value: '+91 9873218040', href: 'tel:+919873218040' },
+                { Icon: Phone, label: 'Deepshikha', value: '+91 9319656021', href: 'tel:+919319656021' },
+                { Icon: MapPin, label: 'Location', value: 'Bhondsi, Gurgaon, Haryana', href: 'https://maps.google.com/?q=Bhondsi+Gurgaon' },
+              ].map(({ Icon, label, value, href }) => (
+                <a key={label} href={href} target="_blank" rel="noopener noreferrer" className="flex items-start gap-4 group">
+                  <div className="w-11 h-11 rounded-2xl flex items-center justify-center shrink-0" style={{ background: '#eef0f8' }}>
+                    <Icon size={18} style={{ color: '#3f51a3' }} />
+                  </div>
+                  <div>
+                    <p className="text-xs font-700 mb-0.5 uppercase tracking-widest" style={{ fontWeight: 700, color: '#888' }}>{label}</p>
+                    <p className="font-600 group-hover:text-[#3f51a3] transition-colors" style={{ fontWeight: 600, color: '#1a1f3c' }}>{value}</p>
+                  </div>
                 </a>
-                <a
-                  href="https://wa.me/919319656021?text=Hi%20Paw%20Paradise%2C%20I%27d%20like%20to%20know%20more%20about%20your%20dog%20care%20services."
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="block text-green-600 hover:text-green-700 font-semibold"
-                >
-                  Chat with Deepshikha
-                </a>
-              </div>
+              ))}
             </div>
 
-            {/* Phone */}
-            <div className="bg-white p-8 rounded-lg shadow-md text-center">
-              <Phone className="w-12 h-12 text-blue-700 mx-auto mb-4" />
-              <h3 className="text-2xl font-bold mb-2 text-gray-900">Phone</h3>
-              <p className="text-gray-700 mb-4">Call us directly</p>
-              <div className="space-y-2">
-                <a
-                  href="tel:+919873218040"
-                  className="block text-blue-700 hover:text-blue-800 font-semibold"
-                >
-                  +91 9873 218 040 (Aashima)
-                </a>
-                <a
-                  href="tel:+919319656021"
-                  className="block text-blue-700 hover:text-blue-800 font-semibold"
-                >
-                  +91 9319 656 021 (Deepshikha)
-                </a>
-              </div>
-            </div>
-
-            {/* Location */}
-            <div className="bg-white p-8 rounded-lg shadow-md text-center">
-              <MapPin className="w-12 h-12 text-red-500 mx-auto mb-4" />
-              <h3 className="text-2xl font-bold mb-2 text-gray-900">Location</h3>
-              <p className="text-gray-700 mb-4">Visit us anytime</p>
-              <p className="text-gray-900 font-semibold">Bhondsi, Gurgaon, Haryana</p>
+            <div className="flex flex-col gap-3">
+              <a
+                href="https://wa.me/919873218040?text=Hi%20Paw%20Paradise%2C%20I%27d%20like%20to%20know%20more!"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-green"
+              >
+                <MessageCircle size={16} />
+                WhatsApp Aashima
+              </a>
+              <a
+                href="https://wa.me/919319656021?text=Hi%20Paw%20Paradise%2C%20I%27d%20like%20to%20know%20more!"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-outline"
+              >
+                <MessageCircle size={16} />
+                WhatsApp Deepshikha
+              </a>
             </div>
           </div>
-        </div>
-      </section>
 
-      {/* Enquiry Form */}
-      <section className="py-16 bg-white">
-        <div className="container mx-auto px-4 max-w-2xl">
-          <h2 className="text-4xl font-bold text-center mb-12 text-gray-900">Send an Enquiry</h2>
-          <form onSubmit={handleSubmit} className="space-y-6">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div>
-                <label className="block text-gray-900 font-semibold mb-2">Your Name *</label>
-                <input
-                  type="text"
-                  name="name"
-                  value={formData.name}
-                  onChange={handleChange}
-                  required
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-700"
-                  placeholder="Enter your name"
-                />
+          {/* Form */}
+          <div className="reveal-right">
+            {sent ? (
+              <div className="bg-white rounded-3xl p-12 text-center shadow-xl">
+                <div className="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4" style={{ background: '#edf8f2' }}>
+                  <span className="text-3xl">🐾</span>
+                </div>
+                <h3 className="font-700 text-xl mb-2" style={{ fontWeight: 700, color: '#1a1f3c' }}>Message sent!</h3>
+                <p className="text-sm" style={{ color: '#666' }}>We've opened WhatsApp with your message. We'll get back to you soon.</p>
               </div>
-              <div>
-                <label className="block text-gray-900 font-semibold mb-2">Phone Number *</label>
-                <input
-                  type="tel"
-                  name="phone"
-                  value={formData.phone}
-                  onChange={handleChange}
-                  required
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-700"
-                  placeholder="Your phone number"
-                />
-              </div>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div>
-                <label className="block text-gray-900 font-semibold mb-2">Email</label>
-                <input
-                  type="email"
-                  name="email"
-                  value={formData.email}
-                  onChange={handleChange}
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-700"
-                  placeholder="Your email address"
-                />
-              </div>
-              <div>
-                <label className="block text-gray-900 font-semibold mb-2">Service Interested In *</label>
-                <select
-                  name="service"
-                  value={formData.service}
-                  onChange={handleChange}
-                  required
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-700"
-                >
-                  <option value="">Select a service</option>
-                  <option value="24/7 Boarding">24/7 Dog Boarding</option>
-                  <option value="Daycare">Dog Daycare</option>
-                  <option value="Grooming">Grooming & Hygiene Care</option>
-                  <option value="Nutrition">Diet & Nutrition Support</option>
-                  <option value="Rescue">Rescue & Additional Services</option>
-                  <option value="Other">Other</option>
-                </select>
-              </div>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div>
-                <label className="block text-gray-900 font-semibold mb-2">Dog Name</label>
-                <input
-                  type="text"
-                  name="petName"
-                  value={formData.petName}
-                  onChange={handleChange}
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-700"
-                  placeholder="Your dog's name"
-                />
-              </div>
-              <div>
-                <label className="block text-gray-900 font-semibold mb-2">Dog Breed</label>
-                <input
-                  type="text"
-                  name="petBreed"
-                  value={formData.petBreed}
-                  onChange={handleChange}
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-700"
-                  placeholder="Your dog's breed"
-                />
-              </div>
-            </div>
-
-            <div>
-              <label className="block text-gray-900 font-semibold mb-2">Message</label>
-              <textarea
-                name="message"
-                value={formData.message}
-                onChange={handleChange}
-                rows={5}
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-700"
-                placeholder="Tell us more about your enquiry..."
-              ></textarea>
-            </div>
-
-            <button
-              type="submit"
-              className="w-full bg-green-500 hover:bg-green-600 text-white font-semibold py-3 rounded-lg transition-colors"
-            >
-              Send Enquiry via WhatsApp
-            </button>
-          </form>
-        </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="py-16 bg-secondary-cream">
-        <div className="container mx-auto px-4 text-center">
-          <h2 className="text-4xl font-bold mb-4 text-gray-900">Prefer to Chat Directly?</h2>
-          <p className="text-xl mb-8 max-w-2xl mx-auto text-gray-700">
-            No problem! Click the WhatsApp button below to start a conversation immediately.
-          </p>
-          <a
-            href="https://wa.me/919873218040?text=Hi%20Paw%20Paradise%2C%20I%27d%20like%20to%20know%20more%20about%20your%20dog%20care%20services."
-            target="_blank"
-            rel="noopener noreferrer"
-            className="bg-green-500 hover:bg-green-600 text-white px-8 py-3 rounded-lg font-semibold transition-colors inline-block"
-          >
-            Chat on WhatsApp Now
-          </a>
+            ) : (
+              <form onSubmit={submit} className="bg-white rounded-3xl p-8 shadow-xl space-y-4">
+                <h3 className="font-700 text-xl mb-2" style={{ fontWeight: 700, color: '#1a1f3c' }}>Send an enquiry</h3>
+                <div className="grid sm:grid-cols-2 gap-4">
+                  <div>
+                    <label className="block text-xs font-700 mb-1.5 uppercase tracking-wide" style={{ fontWeight: 700, color: '#888' }}>Your name</label>
+                    <input name="name" value={form.name} onChange={handle} required placeholder="e.g. Priya Sharma" className={inputClass} style={inputStyle} />
+                  </div>
+                  <div>
+                    <label className="block text-xs font-700 mb-1.5 uppercase tracking-wide" style={{ fontWeight: 700, color: '#888' }}>Phone number</label>
+                    <input name="phone" value={form.phone} onChange={handle} placeholder="+91 98765 00000" className={inputClass} style={inputStyle} />
+                  </div>
+                </div>
+                <div>
+                  <label className="block text-xs font-700 mb-1.5 uppercase tracking-wide" style={{ fontWeight: 700, color: '#888' }}>Dog's name & breed</label>
+                  <input name="dog" value={form.dog} onChange={handle} placeholder="e.g. Max, Golden Retriever" className={inputClass} style={inputStyle} />
+                </div>
+                <div>
+                  <label className="block text-xs font-700 mb-1.5 uppercase tracking-wide" style={{ fontWeight: 700, color: '#888' }}>Email (optional)</label>
+                  <input name="email" type="email" value={form.email} onChange={handle} placeholder="you@example.com" className={inputClass} style={inputStyle} />
+                </div>
+                <div>
+                  <label className="block text-xs font-700 mb-1.5 uppercase tracking-wide" style={{ fontWeight: 700, color: '#888' }}>Your message</label>
+                  <textarea name="message" value={form.message} onChange={handle} required rows={4} placeholder="Tell us what you need..." className={inputClass} style={{ ...inputStyle, resize: 'none' }} />
+                </div>
+                <button type="submit" className="btn-primary w-full justify-center">
+                  <Send size={16} />
+                  Send via WhatsApp
+                </button>
+                <p className="text-xs text-center" style={{ color: '#aaa' }}>This will open WhatsApp with your message pre-filled.</p>
+              </form>
+            )}
+          </div>
         </div>
       </section>
     </Layout>

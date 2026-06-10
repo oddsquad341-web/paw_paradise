@@ -1,11 +1,12 @@
-import { useState } from 'react';
-import { Menu, X } from 'lucide-react';
-import { Link } from 'wouter';
+import { useState, useEffect } from 'react';
+import { Menu, X, Phone } from 'lucide-react';
+import { Link, useLocation } from 'wouter';
 
 const NAV_ITEMS = [
   { label: 'Home', href: '/' },
   { label: 'About', href: '/about' },
   { label: 'Services', href: '/services' },
+  { label: 'Facility', href: '/facility' },
   { label: 'Gallery', href: '/gallery' },
   { label: 'Testimonials', href: '/testimonials' },
   { label: 'FAQ', href: '/faq' },
@@ -14,24 +15,48 @@ const NAV_ITEMS = [
 
 export default function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const [location] = useLocation();
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 20);
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
+
+  useEffect(() => {
+    setIsMobileMenuOpen(false);
+  }, [location]);
 
   return (
-    <header className="sticky top-0 z-30 bg-white border-b border-gray-200 shadow-sm">
-      <div className="container mx-auto px-4 py-4 flex items-center justify-between">
+    <header
+      className={`sticky top-0 z-50 transition-all duration-300 ${
+        scrolled ? 'nav-glass shadow-md' : 'bg-transparent'
+      }`}
+      style={{ background: scrolled ? undefined : 'rgba(244,241,229,0.97)' }}
+    >
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 py-3 flex items-center justify-between gap-4">
         {/* Logo */}
-        <Link href="/" className="flex items-center gap-2">
-          <div className="flex items-center">
-            <h1 className="text-2xl md:text-3xl font-bold text-blue-700">Paw Paradise</h1>
-          </div>
+        <Link href="/" className="flex items-center gap-3 shrink-0">
+          <img
+            src="/assets/logos/logo-green.png"
+            alt="Paw Paradise"
+            className="h-12 w-auto"
+          />
         </Link>
 
-        {/* Desktop Navigation */}
-        <nav className="hidden md:flex items-center gap-8">
+        {/* Desktop Nav */}
+        <nav className="hidden lg:flex items-center gap-1">
           {NAV_ITEMS.map((item) => (
             <Link
               key={item.href}
               href={item.href}
-              className="text-gray-700 hover:text-blue-700 font-medium transition-colors text-sm"
+              className={`px-3 py-1.5 rounded-full text-sm font-500 transition-all duration-200 ${
+                location === item.href
+                  ? 'bg-[#3f51a3] text-white'
+                  : 'text-[#1a1f3c] hover:bg-[#f1d4dd] hover:text-[#3f51a3]'
+              }`}
+              style={{ fontFamily: 'Bricolage Grotesque, sans-serif', fontWeight: 500 }}
             >
               {item.label}
             </Link>
@@ -39,59 +64,68 @@ export default function Header() {
         </nav>
 
         {/* Desktop CTA */}
-        <div className="hidden md:flex items-center gap-3">
+        <div className="hidden lg:flex items-center gap-3 shrink-0">
           <a
-            href="https://wa.me/919873218040?text=Hi%20Paw%20Paradise%2C%20I%27d%20like%20to%20know%20more%20about%20your%20dog%20care%20services."
-            target="_blank"
-            rel="noopener noreferrer"
-            className="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-lg font-medium text-sm transition-colors"
+            href="tel:+919873218040"
+            className="flex items-center gap-1.5 text-sm font-600 text-[#3f51a3]"
+            style={{ fontWeight: 600 }}
           >
-            Chat on WhatsApp
+            <Phone size={14} />
+            9873218040
           </a>
           <a
-            href="#contact"
-            className="bg-blue-700 hover:bg-blue-800 text-white px-4 py-2 rounded-lg font-medium text-sm transition-colors"
+            href="https://wa.me/919873218040?text=Hi%20Paw%20Paradise%2C%20I%27d%20like%20to%20know%20more!"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn-green text-sm !py-2 !px-4"
           >
-            Enquire
+            WhatsApp Us
           </a>
         </div>
 
-        {/* Mobile Menu Button */}
+        {/* Mobile Menu Toggle */}
         <button
-          className="md:hidden text-gray-700"
+          className="lg:hidden p-2 rounded-full hover:bg-[#f1d4dd] transition-colors"
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+          aria-label="Toggle menu"
         >
-          {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+          {isMobileMenuOpen ? <X size={22} /> : <Menu size={22} />}
         </button>
       </div>
 
-      {/* Mobile Navigation */}
+      {/* Mobile Menu */}
       {isMobileMenuOpen && (
-        <div className="md:hidden bg-white border-t border-gray-200 py-4 px-4 space-y-3 animate-in fade-in slide-in-from-top-2 duration-200">
-          {NAV_ITEMS.map((item) => (
-            <Link
-              key={item.href}
-              href={item.href}
-              className="block text-gray-700 hover:text-blue-700 font-medium py-2"
-              onClick={() => setIsMobileMenuOpen(false)}
-            >
-              {item.label}
-            </Link>
-          ))}
-          <div className="pt-3 border-t border-gray-200 space-y-2">
+        <div className="lg:hidden bg-[#f4f1e5] border-t border-[#ddd8c5] py-4 px-4 animate-fade-up">
+          <nav className="space-y-1 mb-4">
+            {NAV_ITEMS.map((item) => (
+              <Link
+                key={item.href}
+                href={item.href}
+                className={`block px-4 py-2.5 rounded-xl font-500 transition-all ${
+                  location === item.href
+                    ? 'bg-[#3f51a3] text-white'
+                    : 'text-[#1a1f3c] hover:bg-[#f1d4dd]'
+                }`}
+                style={{ fontWeight: 500 }}
+              >
+                {item.label}
+              </Link>
+            ))}
+          </nav>
+          <div className="flex gap-2 pt-3 border-t border-[#ddd8c5]">
             <a
-              href="https://wa.me/919873218040?text=Hi%20Paw%20Paradise%2C%20I%27d%20like%20to%20know%20more%20about%20your%20dog%20care%20services."
+              href="https://wa.me/919873218040?text=Hi%20Paw%20Paradise%2C%20I%27d%20like%20to%20know%20more!"
               target="_blank"
               rel="noopener noreferrer"
-              className="block w-full bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-lg font-medium text-center transition-colors"
+              className="btn-green flex-1 text-center text-sm !py-2"
             >
-              Chat on WhatsApp
+              WhatsApp
             </a>
             <a
-              href="#contact"
-              className="block w-full bg-blue-700 hover:bg-blue-800 text-white px-4 py-2 rounded-lg font-medium text-center transition-colors"
+              href="tel:+919873218040"
+              className="btn-outline flex-1 text-center text-sm !py-2"
             >
-              Enquire
+              Call Now
             </a>
           </div>
         </div>

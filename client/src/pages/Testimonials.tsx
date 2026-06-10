@@ -2,150 +2,64 @@ import Layout from '@/components/Layout';
 import { Star } from 'lucide-react';
 
 const TESTIMONIALS = [
-  {
-    name: 'Priya Sharma',
-    dog: 'Max (Golden Retriever)',
-    text: 'Paw Paradise has been a game-changer for us. Max absolutely loves his time there, and we feel completely at ease knowing he\'s in such caring hands. The team goes above and beyond.',
-    rating: 5,
-  },
-  {
-    name: 'Rajesh Kumar',
-    dog: 'Bella (Labrador)',
-    text: 'The team at Paw Paradise treats every dog like their own. Bella comes back happy, well-rested, and always excited to go back. We couldn\'t ask for better care.',
-    rating: 5,
-  },
-  {
-    name: 'Anjali Patel',
-    dog: 'Simba (German Shepherd)',
-    text: 'We trust Paw Paradise completely. The care, attention to detail, and genuine love for dogs is evident in everything they do. Simba is thriving here.',
-    rating: 5,
-  },
-  {
-    name: 'Vikram Singh',
-    dog: 'Charlie (Beagle)',
-    text: 'Charlie\'s behavior has improved so much since he started daycare at Paw Paradise. The socialization and structured care have made a real difference.',
-    rating: 5,
-  },
-  {
-    name: 'Neha Gupta',
-    dog: 'Luna (Cocker Spaniel)',
-    text: 'The grooming service is exceptional. Luna always comes back looking and feeling her best. The team is gentle and professional.',
-    rating: 5,
-  },
-  {
-    name: 'Arjun Reddy',
-    dog: 'Rocky (German Shepherd Mix)',
-    text: 'We rescued Rocky, and Paw Paradise\'s rehabilitation program has been instrumental in his recovery. They truly care about rescue animals.',
-    rating: 5,
-  },
-  {
-    name: 'Divya Nair',
-    dog: 'Milo (Pug)',
-    text: 'The nutrition support has been great for Milo\'s health. The team understands his dietary needs and provides customized care. Highly recommended!',
-    rating: 5,
-  },
-  {
-    name: 'Sanjay Malhotra',
-    dog: 'Duke (Boxer)',
-    text: 'Paw Paradise is the only place we trust with Duke. The facility is clean, spacious, and the staff is incredibly caring. Worth every penny.',
-    rating: 5,
-  },
-  {
-    name: 'Meera Kapoor',
-    dog: 'Daisy (Mixed Breed)',
-    text: 'We\'ve used Paw Paradise for boarding, daycare, and grooming. Every service is top-notch. Daisy is always happy and healthy.',
-    rating: 5,
-  },
+  { name: 'Priya Sharma', dog: 'Max — Golden Retriever', rating: 5, text: 'Paw Paradise has been a game-changer for us. Max absolutely loves his time there, and we feel completely at ease knowing he\'s in such caring hands.' },
+  { name: 'Rajesh Kumar', dog: 'Bella — Labrador', rating: 5, text: 'The team at Paw Paradise treats every dog like their own. Bella comes back happy, well-rested, and always excited to go back.' },
+  { name: 'Anjali Patel', dog: 'Simba — German Shepherd', rating: 5, text: 'We trust Paw Paradise completely. The care, attention to detail, and genuine love for dogs is evident in everything they do.' },
+  { name: 'Kiran Singh', dog: 'Bruno — Beagle', rating: 5, text: 'Bruno used to be anxious about going anywhere new. After a few visits to Paw Paradise, he practically drags me to the car when it\'s time to go. That\'s the best endorsement I can give.' },
+  { name: 'Meera Nair', dog: 'Luna — Dachshund', rating: 5, text: 'The facility is clean, spacious, and the staff genuinely care. Luna gets the same routine she has at home. I can\'t ask for more.' },
+  { name: 'Vikram Arora', dog: 'Charlie — Labrador Mix', rating: 5, text: 'I was nervous about boarding Charlie for the first time. The founders personally showed me around and answered every question patiently. Booked immediately.' },
 ];
 
 export default function Testimonials() {
   return (
     <Layout>
-      {/* Hero Section */}
-      <section className="py-16 bg-blue-700 text-white">
-        <div className="container mx-auto px-4 text-center">
-          <h1 className="text-5xl md:text-6xl font-bold mb-4">Testimonials</h1>
-          <p className="text-xl max-w-2xl mx-auto">
-            What pet parents say about their experience at Paw Paradise
+      <section className="section" style={{ background: '#1a1f3c' }}>
+        <div className="max-w-3xl mx-auto px-6 text-center">
+          <div className="eyebrow animate-fade-up" style={{ color: '#58bd7a' }}>From pet parents</div>
+          <h1 className="display-xl text-white animate-fade-up delay-100 mb-6">Testimonials</h1>
+          <p className="body-lg animate-fade-up delay-200" style={{ color: 'rgba(255,255,255,0.65)' }}>
+            Real words from real dog owners in Gurgaon.
           </p>
         </div>
       </section>
 
-      {/* Testimonials Grid */}
-      <section className="py-16 bg-secondary-cream">
-        <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {TESTIMONIALS.map((testimonial, idx) => (
-              <div
-                key={idx}
-                className="bg-white p-8 rounded-lg shadow-md hover:shadow-lg transition-shadow"
-              >
-                {/* Rating */}
-                <div className="flex gap-1 mb-4">
-                  {Array.from({ length: testimonial.rating }).map((_, i) => (
-                    <Star key={i} className="w-5 h-5 fill-yellow-400 text-yellow-400" />
-                  ))}
+      <section className="section max-w-7xl mx-auto px-6">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 stagger">
+          {TESTIMONIALS.map((t, i) => (
+            <div key={i} className="reveal testimonial-card card-hover">
+              <div className="flex gap-1 mb-6 mt-6">
+                {Array.from({ length: t.rating }).map((_, s) => (
+                  <Star key={s} size={14} fill="#f4a42c" style={{ color: '#f4a42c' }} />
+                ))}
+              </div>
+              <p className="text-sm leading-relaxed mb-6" style={{ color: '#444' }}>"{t.text}"</p>
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 rounded-full flex items-center justify-center text-white font-700 text-sm" style={{ background: '#3f51a3', fontWeight: 700 }}>
+                  {t.name[0]}
                 </div>
-
-                {/* Testimonial Text */}
-                <p className="text-gray-700 mb-6 italic leading-relaxed">
-                  "{testimonial.text}"
-                </p>
-
-                {/* Author Info */}
-                <div className="border-t border-gray-200 pt-4">
-                  <p className="font-semibold text-gray-900">{testimonial.name}</p>
-                  <p className="text-sm text-gray-600">{testimonial.dog}</p>
+                <div>
+                  <p className="font-700 text-sm" style={{ fontWeight: 700, color: '#1a1f3c' }}>{t.name}</p>
+                  <p className="text-xs" style={{ color: '#888' }}>{t.dog}</p>
                 </div>
               </div>
-            ))}
-          </div>
+            </div>
+          ))}
         </div>
       </section>
 
-      {/* Stats Section */}
-      <section className="py-16 bg-white">
-        <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
-            <div>
-              <h3 className="text-5xl font-bold text-blue-700 mb-2">{TESTIMONIALS.length}+</h3>
-              <p className="text-gray-700 text-lg">Happy Pet Parents</p>
-            </div>
-            <div>
-              <h3 className="text-5xl font-bold text-green-500 mb-2">35+</h3>
-              <p className="text-gray-700 text-lg">Rescues in Care</p>
-            </div>
-            <div>
-              <h3 className="text-5xl font-bold text-pink-500 mb-2">5.0</h3>
-              <p className="text-gray-700 text-lg">Average Rating</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="py-16 bg-blue-700 text-white">
-        <div className="container mx-auto px-4 text-center">
-          <h2 className="text-4xl font-bold mb-4">Ready to Join Our Family?</h2>
-          <p className="text-xl mb-8 max-w-2xl mx-auto">
-            Experience the Paw Paradise difference. Your dog deserves the best care.
-          </p>
-          <div className="flex flex-col md:flex-row gap-4 justify-center">
-            <a
-              href="https://wa.me/919873218040?text=Hi%20Paw%20Paradise%2C%20I%27d%20like%20to%20know%20more%20about%20your%20dog%20care%20services."
-              target="_blank"
-              rel="noopener noreferrer"
-              className="bg-green-500 hover:bg-green-600 text-white px-8 py-3 rounded-lg font-semibold transition-colors"
-            >
-              Chat on WhatsApp
-            </a>
-            <a
-              href="#contact"
-              className="bg-white hover:bg-gray-100 text-blue-700 px-8 py-3 rounded-lg font-semibold transition-colors"
-            >
-              Book a Visit
-            </a>
-          </div>
+      {/* CTA */}
+      <section className="section" style={{ background: '#f1d4dd' }}>
+        <div className="max-w-xl mx-auto px-6 text-center reveal">
+          <h2 className="display-md mb-4" style={{ color: '#1a1f3c' }}>Your dog could be next</h2>
+          <p className="body-lg mb-8" style={{ color: '#555' }}>We'd love to welcome your pet to Paw Paradise.</p>
+          <a
+            href="https://wa.me/919873218040?text=Hi%20Paw%20Paradise%2C%20I%27d%20like%20to%20book%20a%20visit!"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn-primary"
+          >
+            Book a visit
+          </a>
         </div>
       </section>
     </Layout>
