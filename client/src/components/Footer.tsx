@@ -61,10 +61,17 @@ export default function Footer() {
             </p>
             <p className="text-sm italic" style={{ color: '#58bd7a' }}>"where every paw feels at home"</p>
             <div className="flex gap-3 mt-5">
-              {[Instagram, Facebook, Youtube].map((Icon, i) => (
+              {[
+                { Icon: Instagram, href: 'https://www.instagram.com/pawparadisegurgaon/', label: 'Instagram' },
+                { Icon: Facebook, href: '#', label: 'Facebook' },
+                { Icon: Youtube, href: '#', label: 'YouTube' },
+              ].map(({ Icon, href, label }) => (
                 <a
-                  key={i}
-                  href="#"
+                  key={label}
+                  href={href}
+                  target={href !== '#' ? '_blank' : undefined}
+                  rel={href !== '#' ? 'noopener noreferrer' : undefined}
+                  aria-label={label}
                   className="w-9 h-9 rounded-full flex items-center justify-center transition-all hover:scale-110"
                   style={{ background: 'rgba(255,255,255,0.1)', color: 'rgba(255,255,255,0.7)' }}
                 >
