@@ -40,9 +40,7 @@ export default function Footer() {
             >
               Chat on WhatsApp
             </a>
-            <a href="tel:+919873218040" className="btn-outline-white">
-              Call Aashima
-            </a>
+
           </div>
         </div>
       </div>

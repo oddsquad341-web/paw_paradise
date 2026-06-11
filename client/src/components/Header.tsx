@@ -66,14 +66,6 @@ export default function Header() {
         {/* Desktop CTA */}
         <div className="hidden lg:flex items-center gap-3 shrink-0">
           <a
-            href="tel:+919873218040"
-            className="flex items-center gap-1.5 text-sm font-600 text-[#3f51a3]"
-            style={{ fontWeight: 600 }}
-          >
-            <Phone size={14} />
-            9873218040
-          </a>
-          <a
             href="https://wa.me/919873218040?text=Hi%20Paw%20Paradise%2C%20I%27d%20like%20to%20know%20more!"
             target="_blank"
             rel="noopener noreferrer"
@@ -121,12 +113,7 @@ export default function Header() {
             >
               WhatsApp
             </a>
-            <a
-              href="tel:+919873218040"
-              className="btn-outline flex-1 text-center text-sm !py-2"
-            >
-              Call Now
-            </a>
+
           </div>
         </div>
       )}
