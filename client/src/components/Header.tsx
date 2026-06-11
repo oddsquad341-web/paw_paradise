@@ -120,6 +120,9 @@ export default function Header() {
             >
               WhatsApp
             </a>
+            <a href="tel:+919873218040" className="btn-outline flex-1 text-center text-sm !py-2">
+              Call Us
+            </a>
 
           </div>
         </div>

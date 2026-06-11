@@ -60,17 +60,25 @@ export default function Footer() {
               A warm, loving, and joyful home away from home for pets and rescues in Gurgaon.
             </p>
             <p className="text-sm italic" style={{ color: '#58bd7a' }}>"where every paw feels at home"</p>
-            <div className="flex gap-3 mt-5">
+            {/* Instagram with handle */}
+            <a
+              href="https://www.instagram.com/pawparadisegurgaon/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 mt-5 px-3 py-2 rounded-xl transition-all hover:scale-105"
+              style={{ background: 'rgba(255,255,255,0.08)', color: 'rgba(255,255,255,0.75)', border: '1px solid rgba(255,255,255,0.1)' }}
+            >
+              <Instagram size={15} />
+              <span className="text-sm font-600" style={{ fontWeight: 600 }}>@pawparadisegurgaon</span>
+            </a>
+            <div className="flex gap-3 mt-3">
               {[
-                { Icon: Instagram, href: 'https://www.instagram.com/pawparadisegurgaon/', label: 'Instagram' },
                 { Icon: Facebook, href: '#', label: 'Facebook' },
                 { Icon: Youtube, href: '#', label: 'YouTube' },
               ].map(({ Icon, href, label }) => (
                 <a
                   key={label}
                   href={href}
-                  target={href !== '#' ? '_blank' : undefined}
-                  rel={href !== '#' ? 'noopener noreferrer' : undefined}
                   aria-label={label}
                   className="w-9 h-9 rounded-full flex items-center justify-center transition-all hover:scale-110"
                   style={{ background: 'rgba(255,255,255,0.1)', color: 'rgba(255,255,255,0.7)' }}
