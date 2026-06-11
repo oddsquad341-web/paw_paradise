@@ -59,10 +59,14 @@
 html { scroll-behavior: smooth; }
 
 body {
-  font-family: 'Bricolage Grotesque', system-ui, sans-serif;
+  font-family: 'Cormorant Garamond', 'Georgia', serif;
   background: var(--pp-cream);
   color: var(--pp-black);
   -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, h5, h6, .display-xl, .display-lg, .display-md, nav, button, .btn-primary, .btn-green, .btn-outline, .btn-outline-white, .eyebrow, .chip, .badge-live {
+  font-family: 'Bricolage Grotesque', system-ui, sans-serif;
 }
 
 /* === SCROLL ANIMATIONS === */
@@ -176,8 +180,9 @@ body {
   line-height: 1.2;
 }
 .body-lg {
-  font-size: 1.125rem;
-  line-height: 1.7;
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 1.2rem;
+  line-height: 1.75;
   font-weight: 400;
 }
 

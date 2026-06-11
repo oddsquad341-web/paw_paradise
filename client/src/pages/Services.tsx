@@ -55,8 +55,8 @@ const SERVICES = [
       'Customized for breed and coat type',
     ],
     image: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663706632196/bBWz5BiAB238xMLxsQg67b/service-grooming-9mRvDxCzZ6s8YuZE9XACZK.webp',
-    color: '#a83f8a',
-    bg: '#f8eef5',
+    color: '#3f51a3',
+    bg: '#eef0f8',
   },
   {
     id: 'nutrition',
@@ -73,8 +73,8 @@ const SERVICES = [
       'Weight and condition monitoring',
     ],
     image: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663706632196/bBWz5BiAB238xMLxsQg67b/service-nutrition-TebHTCNJZTvvMhGF4cP5ZS.webp',
-    color: '#e07a2f',
-    bg: '#fdf3ec',
+    color: '#58bd7a',
+    bg: '#edf8f2',
   },
 ];
 

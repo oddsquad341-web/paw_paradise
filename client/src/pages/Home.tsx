@@ -80,15 +80,15 @@ const STATS = [
 const SERVICES = [
   { icon: Clock, title: '24/7 Dog Boarding', desc: 'Comfortable stays with personalized care. Round-the-clock supervision.', color: '#3f51a3', bg: '#eef0f8', href: '/services#boarding', image: 'https://images.unsplash.com/photo-1601758125946-6ec2ef64daf8?w=600&q=80' },
   { icon: Users, title: 'Dog Daycare', desc: 'Supervised social play. Structured activity and rest cycles daily.', color: '#58bd7a', bg: '#edf8f2', href: '/services#daycare', image: 'https://images.unsplash.com/photo-1548199973-03cce0bbc87b?w=600&q=80' },
-  { icon: Wind, title: 'Grooming & Hygiene', desc: 'Professional bathing, brushing, nail trimming. Stress-free always.', color: '#a83f8a', bg: '#f8eef5', href: '/services#grooming', image: 'https://images.unsplash.com/photo-1587300003388-59208cc962cb?w=600&q=80' },
-  { icon: Leaf, title: 'Diet & Nutrition', desc: 'Three meals a day, tailored to your dog\'s exact dietary needs.', color: '#e07a2f', bg: '#fdf3ec', href: '/services#nutrition', image: 'https://images.unsplash.com/photo-1568640347023-a616a30bc3bd?w=600&q=80' },
+  { icon: Wind, title: 'Grooming & Hygiene', desc: 'Professional bathing, brushing, nail trimming. Stress-free always.', color: '#3f51a3', bg: '#eef0f8', href: '/services#grooming', image: 'https://images.unsplash.com/photo-1587300003388-59208cc962cb?w=600&q=80' },
+  { icon: Leaf, title: 'Diet & Nutrition', desc: 'Three meals a day, tailored to your dog\'s exact dietary needs.', color: '#58bd7a', bg: '#edf8f2', href: '/services#nutrition', image: 'https://images.unsplash.com/photo-1568640347023-a616a30bc3bd?w=600&q=80' },
 ];
 
 const HOW_IT_WORKS = [
   { step: '01', title: 'Reach out', desc: 'WhatsApp or call us. Tell us about your dog — breed, age, any special needs. We\'ll answer every question.', color: '#3f51a3' },
   { step: '02', title: 'Visit the facility', desc: 'Come see the space, meet the team, let your dog get comfortable. No pressure, just a friendly tour.', color: '#58bd7a' },
-  { step: '03', title: 'Drop off with confidence', desc: 'We handle the rest. Daily care, meals, play, and rest — all tailored to your dog.', color: '#a83f8a' },
-  { step: '04', title: 'Pick up a happy dog', desc: 'Your dog comes back well-rested, fed, socialised, and genuinely happy. Every time.', color: '#e07a2f' },
+  { step: '03', title: 'Drop off with confidence', desc: 'We handle the rest. Daily care, meals, play, and rest — all tailored to your dog.', color: '#3f51a3' },
+  { step: '04', title: 'Pick up a happy dog', desc: 'Your dog comes back well-rested, fed, socialised, and genuinely happy. Every time.', color: '#58bd7a' },
 ];
 
 const WHY_US = [
@@ -303,7 +303,7 @@ export default function Home() {
                   </div>
                   <h3 className="text-white mb-2" style={{ fontWeight: 700, fontSize: '1.05rem' }}>{s.title}</h3>
                   <p className="text-sm leading-relaxed mb-4" style={{ color: 'rgba(255,255,255,0.5)' }}>{s.desc}</p>
-                  <div className="flex items-center gap-1.5 text-xs font-600 transition-all group-hover:gap-2.5" style={{ color: s.color === '#3f51a3' ? '#7b8fd4' : '#58bd7a', fontWeight: 600 }}>
+                  <div className="flex items-center gap-1.5 text-xs font-600 transition-all group-hover:gap-2.5" style={{ color: s.color === '#3f51a3' ? '#7b8fd4' : '#4aaa6b', fontWeight: 600 }}>
                     Learn more <ArrowRight size={12} />
                   </div>
                 </div>
