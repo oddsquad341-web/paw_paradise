@@ -1,6 +1,7 @@
 import Layout from '@/components/Layout';
 import { Link } from 'wouter';
 import { Clock, Users, Scissors, Apple, Heart, Shield, Waves, ArrowRight } from 'lucide-react';
+import { useEffect } from 'react';
 
 const SERVICES = [
   {
@@ -84,6 +85,15 @@ const ADDITIONAL = [
 ];
 
 export default function Services() {
+  useEffect(() => {
+    const hash = window.location.hash;
+    if (hash) {
+      setTimeout(() => {
+        const el = document.querySelector(hash);
+        if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }, 100);
+    }
+  }, []);
   return (
     <Layout>
       {/* Hero */}
@@ -101,7 +111,7 @@ export default function Services() {
       <section className="section max-w-7xl mx-auto px-6">
         <div className="space-y-24">
           {SERVICES.map((s, i) => (
-            <div key={s.id} className={`grid lg:grid-cols-2 gap-16 items-center ${i % 2 === 1 ? 'lg:flex-row-reverse' : ''}`}>
+            <div key={s.id} id={s.id} className={`grid lg:grid-cols-2 gap-16 items-center scroll-mt-24 ${i % 2 === 1 ? 'lg:flex-row-reverse' : ''}`}>
               <div className={i % 2 === 1 ? 'reveal-right lg:order-2' : 'reveal-left'}>
                 <div className="w-12 h-12 rounded-2xl flex items-center justify-center mb-4" style={{ background: s.bg }}>
                   <s.icon size={22} style={{ color: s.color }} />

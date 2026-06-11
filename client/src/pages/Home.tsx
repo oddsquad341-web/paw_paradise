@@ -16,7 +16,7 @@ const SERVICES = [
     desc: 'Comfortable stays with personalized care. Home-like environment with round-the-clock supervision.',
     color: '#3f51a3',
     bg: '#eef0f8',
-    href: '/services',
+    href: '/services#boarding',
     image: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663706632196/bBWz5BiAB238xMLxsQg67b/service-boarding-DxQg9FC9s2PsjYzb2MugG6.webp',
   },
   {
@@ -25,7 +25,7 @@ const SERVICES = [
     desc: 'Supervised social play in a safe, engaging environment. Structured activity and rest cycles.',
     color: '#58bd7a',
     bg: '#edf8f2',
-    href: '/services',
+    href: '/services#daycare',
     image: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663706632196/bBWz5BiAB238xMLxsQg67b/service-daycare-oRvLUTzHLranWdu3EMfFbK.webp',
   },
   {
@@ -34,7 +34,7 @@ const SERVICES = [
     desc: 'Professional bathing, brushing, and nail trimming. Gentle, stress-free grooming for every dog.',
     color: '#a83f8a',
     bg: '#f8eef5',
-    href: '/services',
+    href: '/services#grooming',
     image: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663706632196/bBWz5BiAB238xMLxsQg67b/service-grooming-9mRvDxCzZ6s8YuZE9XACZK.webp',
   },
   {
@@ -43,8 +43,7 @@ const SERVICES = [
     desc: 'Three wholesome meals a day tailored to your dog\'s dietary needs. No guesswork, just care.',
     color: '#e07a2f',
     bg: '#fdf3ec',
-    href: '/services',
-    image: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663706632196/bBWz5BiAB238xMLxsQg67b/service-nutrition-TebHTCNJZTvvMhGF4cP5ZS.webp',
+    href: '/services#nutrition',
   },
 ];
 
@@ -129,8 +128,8 @@ export default function Home() {
                 Book via WhatsApp
                 <ArrowRight size={16} />
               </a>
-              <Link href="/services" className="btn-outline-white">
-                Explore Services
+              <Link href="/gallery" className="btn-outline-white">
+                See Our Gallery
               </Link>
             </div>
 
@@ -236,7 +235,7 @@ export default function Home() {
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 stagger">
             {SERVICES.map((s) => (
-              <Link
+              <a
                 key={s.title}
                 href={s.href}
                 className="reveal group block rounded-2xl overflow-hidden card-hover"
@@ -252,7 +251,7 @@ export default function Home() {
                   <h3 className="font-700 text-white mb-2" style={{ fontWeight: 700, fontSize: '1.05rem' }}>{s.title}</h3>
                   <p className="text-sm leading-relaxed" style={{ color: 'rgba(255,255,255,0.55)' }}>{s.desc}</p>
                 </div>
-              </Link>
+              </a>
             ))}
           </div>
 
@@ -390,34 +389,6 @@ export default function Home() {
             <Link href="/testimonials" className="btn-outline">
               Read more testimonials
             </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* ═══ FINAL CTA ═══ */}
-      <section className="section" style={{ background: '#3f51a3' }}>
-        <div className="max-w-3xl mx-auto px-6 text-center reveal">
-          <img src="/assets/icons/cream-paw.png" alt="" className="w-16 mx-auto mb-6 opacity-40" />
-          <h2 className="display-lg text-white mb-4">Ready to book a stay?</h2>
-          <p className="body-lg mb-10" style={{ color: 'rgba(255,255,255,0.7)' }}>
-            Every rescue takes time, patience, and quiet consistency. That's what we offer — for yours too.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a
-              href="https://wa.me/919873218040?text=Hi%20Paw%20Paradise%2C%20I%27d%20like%20to%20book!"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn-green"
-            >
-              Book via WhatsApp
-              <ArrowRight size={16} />
-            </a>
-            <Link href="/contact" className="btn-outline-white">
-              Send an enquiry
-            </Link>
-            <a href="tel:+919873218040" className="btn-outline-white">
-              Call now
-            </a>
           </div>
         </div>
       </section>
