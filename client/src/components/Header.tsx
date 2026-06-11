@@ -67,11 +67,10 @@ export default function Header() {
         <div className="hidden lg:flex items-center gap-3 shrink-0">
           <a
             href="tel:+919873218040"
-            className="flex items-center gap-1.5 text-sm text-[#1a1f3c] hover:text-[#3f51a3] transition-colors"
-            style={{ fontWeight: 500 }}
+            className="btn-outline text-sm !py-2 !px-4"
           >
             <Phone size={14} />
-            +91 98732 18040
+            Call Us
           </a>
           <a
             href="https://wa.me/919873218040?text=Hi%20Paw%20Paradise%2C%20I%27d%20like%20to%20know%20more!"

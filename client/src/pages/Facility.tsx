@@ -68,19 +68,6 @@ export default function Facility() {
           </div>
         </div>
       </section>
-
-      {/* Rescue mention */}
-      <section className="section" style={{ background: '#3f51a3' }}>
-        <div className="max-w-3xl mx-auto px-6 text-center reveal">
-          <h2 className="display-lg text-white mb-4">Support our rescue mission</h2>
-          <p className="body-lg mb-8" style={{ color: 'rgba(255,255,255,0.75)' }}>
-            For years, we've nurtured and provided medical assistance to over 100 stray and injured dogs beyond our facility. If you'd like to help support our efforts, please get in touch.
-          </p>
-          <a href="https://wa.me/919873218040?text=Hi%2C%20I%27d%20like%20to%20support%20your%20rescue%20work!" target="_blank" rel="noopener noreferrer" className="btn-green">
-            Get in touch <ArrowRight size={16} />
-          </a>
-        </div>
-      </section>
     </Layout>
   );
 }
