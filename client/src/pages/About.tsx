@@ -1,6 +1,6 @@
 import Layout from '@/components/Layout';
 import { Link } from 'wouter';
-import { ArrowRight, Heart, Shield, Leaf, Users } from 'lucide-react';
+import { ArrowRight, Heart, Shield, Leaf, Users, Phone } from 'lucide-react';
 
 const TEAM = [
   {
@@ -8,12 +8,14 @@ const TEAM = [
     role: 'Co-Founder',
     phone: '+91 9873218040',
     bio: 'Driven by a love for animals and a deep commitment to their wellbeing, Aashima co-founded Paw Paradise to give every dog the care they deserve.',
+    image: '/assets/photos/team-3.jpg',
   },
   {
     name: 'Deepshikha',
     role: 'Co-Founder',
     phone: '+91 9319656021',
     bio: 'Deepshikha\'s passion for rescue and rehabilitation has been the backbone of Paw Paradise\'s mission — caring for over 100 dogs and counting.',
+    image: '/assets/photos/team-2.jpg',
   },
 ];
 
@@ -24,17 +26,32 @@ const VALUES = [
   { icon: Users, label: 'Grounded, Not Dramatic', desc: 'Every rescue takes time, patience, and quiet consistency. That\'s what we offer.' },
 ];
 
+const MILESTONES = [
+  { year: '2018', label: 'Paw Paradise founded', desc: 'Started with a single rescue dog and a 1-acre space in Bhondsi.' },
+  { year: '2020', label: '50+ dogs helped', desc: 'Expanded rescue rehabilitation work across Gurgaon.' },
+  { year: '2022', label: '30 kennels operational', desc: 'Full boarding, daycare, and grooming services launched.' },
+  { year: '2024', label: '100+ lives changed', desc: 'Over 100 stray and injured dogs helped, with 35+ rescues in active care.' },
+];
+
 export default function About() {
   return (
     <Layout>
       {/* Hero */}
-      <section className="section" style={{ background: '#1a1f3c' }}>
-        <div className="max-w-4xl mx-auto px-6 text-center">
+      <section className="relative overflow-hidden" style={{ background: '#1a1f3c', minHeight: '50vh' }}>
+        <div className="absolute inset-0 bg-cover bg-center opacity-35"
+          style={{ backgroundImage: "url('/assets/photos/hero-wide-3.jpg')" }} />
+        <div className="absolute inset-0" style={{ background: 'linear-gradient(to right, rgba(26,31,60,0.95) 40%, rgba(26,31,60,0.5) 100%)' }} />
+        <div className="relative z-10 max-w-4xl mx-auto px-6 flex flex-col justify-center" style={{ minHeight: '50vh' }}>
           <div className="eyebrow animate-fade-up" style={{ color: '#58bd7a' }}>Our story</div>
           <h1 className="display-xl text-white animate-fade-up delay-100 mb-6">About Paw Paradise</h1>
-          <p className="body-lg animate-fade-up delay-200" style={{ color: 'rgba(255,255,255,0.65)' }}>
-            where every paw feels at home
+          <p className="body-lg animate-fade-up delay-200" style={{ color: 'rgba(255,255,255,0.65)', maxWidth: '36rem' }}>
+            Where every paw feels at home — in Bhondsi, Gurgaon.
           </p>
+        </div>
+        <div className="absolute bottom-0 left-0 right-0 pointer-events-none">
+          <svg viewBox="0 0 1440 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M0 40L1440 40L1440 10C1200 35 900 0 600 20C300 40 100 0 0 15L0 40Z" fill="#f4f1e5"/>
+          </svg>
         </div>
       </section>
 
@@ -53,19 +70,22 @@ export default function About() {
             <p className="body-lg mb-8" style={{ color: '#555' }}>
               For years, we've nurtured and provided medical assistance to over 100 stray and injured dogs beyond our facility. If you'd like to help support our efforts, please get in touch.
             </p>
-            <Link href="/contact" className="btn-primary">
-              Get in touch
-              <ArrowRight size={16} />
-            </Link>
+            <Link href="/contact" className="btn-primary">Get in touch <ArrowRight size={16} /></Link>
           </div>
 
           <div className="reveal-right">
-            <div className="rounded-3xl overflow-hidden shadow-2xl img-zoom">
-              <img
-                src="https://d2xsxph8kpxj0f.cloudfront.net/310519663706632196/bBWz5BiAB238xMLxsQg67b/facility-outdoor-N8diFedVJKrUHMRnotXiwu.webp"
-                alt="Paw Paradise"
-                className="w-full aspect-[4/3] object-cover"
-              />
+            <div className="grid grid-cols-2 gap-3">
+              <div className="img-zoom rounded-2xl overflow-hidden shadow-xl" style={{ aspectRatio: '3/4' }}>
+                <img src="/assets/photos/team-4.jpg" alt="Staff with dog" className="w-full h-full object-cover" />
+              </div>
+              <div className="flex flex-col gap-3">
+                <div className="img-zoom rounded-2xl overflow-hidden shadow-xl aspect-square">
+                  <img src="/assets/photos/dog-7.jpg" alt="GSD at Paw Paradise" className="w-full h-full object-cover object-top" />
+                </div>
+                <div className="img-zoom rounded-2xl overflow-hidden shadow-xl aspect-square">
+                  <img src="/assets/photos/facility-2.jpg" alt="Open grounds" className="w-full h-full object-cover" />
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -92,26 +112,75 @@ export default function About() {
         </div>
       </section>
 
-      {/* Team */}
-      <section className="section max-w-7xl mx-auto px-6">
+      {/* Timeline */}
+      <section className="section max-w-5xl mx-auto px-6">
         <div className="text-center mb-12 reveal">
-          <div className="eyebrow">Meet the founders</div>
-          <h2 className="display-lg" style={{ color: '#1a1f3c' }}>The people behind the paws</h2>
+          <div className="eyebrow">Our journey</div>
+          <h2 className="display-lg" style={{ color: '#1a1f3c' }}>How far we've come</h2>
         </div>
-        <div className="grid sm:grid-cols-2 gap-8 max-w-2xl mx-auto stagger">
-          {TEAM.map((m) => (
-            <div key={m.name} className="reveal bg-white rounded-2xl p-8 card-hover text-center shadow-lg">
-              <div className="w-16 h-16 rounded-full flex items-center justify-center text-white text-2xl font-800 mx-auto mb-4" style={{ background: '#3f51a3', fontWeight: 800 }}>
-                {m.name[0]}
+        <div className="relative">
+          {/* Timeline line */}
+          <div className="absolute left-8 top-0 bottom-0 w-0.5 hidden sm:block" style={{ background: 'linear-gradient(to bottom, #3f51a3, #58bd7a)' }} />
+          <div className="space-y-8 stagger">
+            {MILESTONES.map((m, i) => (
+              <div key={i} className="reveal flex gap-8 items-start">
+                <div className="shrink-0 w-16 h-16 rounded-full flex items-center justify-center text-white text-sm font-800 relative z-10 shadow-lg"
+                  style={{ background: i % 2 === 0 ? '#3f51a3' : '#58bd7a', fontWeight: 800, fontSize: '0.75rem' }}>{m.year}</div>
+                <div className="bg-white rounded-2xl p-6 card-hover shadow-sm flex-1" style={{ border: '1px solid #eee' }}>
+                  <h3 className="font-700 mb-2" style={{ fontWeight: 700, color: '#1a1f3c' }}>{m.label}</h3>
+                  <p className="text-sm leading-relaxed" style={{ color: '#666' }}>{m.desc}</p>
+                </div>
               </div>
-              <h3 className="font-700 text-xl mb-1" style={{ fontWeight: 700, color: '#1a1f3c' }}>{m.name}</h3>
-              <p className="text-sm mb-4" style={{ color: '#58bd7a', fontWeight: 600 }}>{m.role}</p>
-              <p className="text-sm leading-relaxed mb-4" style={{ color: '#666' }}>{m.bio}</p>
-              <a href={`tel:${m.phone.replace(/\s/g, '')}`} className="text-sm font-600 hover:underline" style={{ color: '#3f51a3', fontWeight: 600 }}>
-                {m.phone}
-              </a>
-            </div>
-          ))}
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Team */}
+      <section className="section" style={{ background: '#1a1f3c' }}>
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="text-center mb-12 reveal">
+            <div className="eyebrow" style={{ color: '#58bd7a' }}>Meet the founders</div>
+            <h2 className="display-lg text-white">The people behind the paws</h2>
+          </div>
+          <div className="grid sm:grid-cols-2 gap-8 max-w-3xl mx-auto stagger">
+            {TEAM.map((m) => (
+              <div key={m.name} className="reveal rounded-2xl overflow-hidden card-hover" style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.08)' }}>
+                <div className="img-zoom h-72">
+                  <img src={m.image} alt={m.name} className="w-full h-full object-cover object-top" />
+                </div>
+                <div className="p-6">
+                  <h3 className="font-700 text-xl mb-1 text-white" style={{ fontWeight: 700 }}>{m.name}</h3>
+                  <p className="text-sm mb-4" style={{ color: '#58bd7a', fontWeight: 600 }}>{m.role}</p>
+                  <p className="text-sm leading-relaxed mb-4" style={{ color: 'rgba(255,255,255,0.6)' }}>{m.bio}</p>
+                  <a href={`tel:${m.phone.replace(/\s/g, '')}`}
+                    className="inline-flex items-center gap-2 text-sm font-600 hover:underline"
+                    style={{ color: '#58bd7a', fontWeight: 600 }}>
+                    <Phone size={14} /> {m.phone}
+                  </a>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* CTA */}
+      <section className="section relative overflow-hidden" style={{ background: '#3f51a3' }}>
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="absolute -left-20 -top-20 w-80 h-80 rounded-full opacity-10" style={{ background: '#58bd7a' }} />
+        </div>
+        <div className="relative max-w-3xl mx-auto px-6 text-center reveal">
+          <h2 className="display-lg text-white mb-4">Come meet the team</h2>
+          <p className="body-lg mb-10" style={{ color: 'rgba(255,255,255,0.65)' }}>
+            We'd love to show you around. Visit Bhondsi and see the space for yourself.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <a href="https://wa.me/919873218040" target="_blank" rel="noopener noreferrer" className="btn-green">
+              WhatsApp Us <ArrowRight size={16} />
+            </a>
+            <Link href="/facility" className="btn-outline-white">See the Facility</Link>
+          </div>
         </div>
       </section>
     </Layout>
