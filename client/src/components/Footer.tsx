@@ -26,25 +26,6 @@ export default function Footer() {
 
   return (
     <footer style={{ background: '#1a1f3c' }} className="text-white">
-      {/* Top CTA Strip */}
-      <div style={{ background: '#3f51a3' }} className="py-10 px-4">
-        <div className="max-w-4xl mx-auto text-center">
-          <p className="eyebrow" style={{ color: '#58bd7a' }}>Ready to book?</p>
-          <h2 className="display-md text-white mb-6">Give your dog a real home away from home</h2>
-          <div className="flex flex-col sm:flex-row gap-3 justify-center">
-            <a
-              href="https://wa.me/919873218040?text=Hi%20Paw%20Paradise%2C%20I%27d%20like%20to%20book%20a%20service!"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn-green"
-            >
-              Chat on WhatsApp
-            </a>
-
-          </div>
-        </div>
-      </div>
-
       {/* Main Footer */}
       <div className="max-w-7xl mx-auto px-4 py-14">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
